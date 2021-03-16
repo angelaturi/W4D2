@@ -21,12 +21,14 @@ class Employee
 
 end
 
-# ned = Employee.new("Ned", "Founder", 1000000)
-# p ned
-# p ned.bonus(5) # => 500_000
+ned = Employee.new("Ned", "Founder", 1000000)
 
-david = Employee.new("David", "TA", 10000)
-p david
-# p shawna.bonus(3)
-# darren.bonus(4) # => 88_000
-p david.bonus(3) # => 30_000
+# ned = Employee.new("Ned", "Founder", 1000000)
+# # p ned
+# # p ned.bonus(5) # => 500_000
+
+# david = Employee.new("David", "TA", 10000)
+# p david
+# # p shawna.bonus(3)
+# # darren.bonus(4) # => 88_000
+# p david.bonus(3) # => 30_000
