@@ -8,9 +8,10 @@ class Piece
         @color = color
     end
 
-    # def inspect
-    #     pos
-    # end
+    def moves
+        possible_moves = []
+    end
+
     
 
 end

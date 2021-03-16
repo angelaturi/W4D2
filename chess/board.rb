@@ -53,5 +53,5 @@ b = Board.new
 p1_w = Piece.new(b, [0, 0], 'W')
 p2_w = Piece.new(b, [7, 0], 'W')
 
-b[p1_w.pos] = p1_w #Piece.new(b, [0, 0], 'W')
+b[p1_w.pos] = p1_w 
 b[p2_w.pos] = p2_w
