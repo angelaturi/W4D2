@@ -1,4 +1,5 @@
 require_relative "piece"
+require_relative "null_piece"
 
 class Board
 
@@ -6,7 +7,7 @@ class Board
         Array.new(8) { Array.new(8, @null_piece) }
     end
 
-    def initialize(piece)
+    def initialize
         @null_piece = NullPiece.new
         @board = Board.init_board()
     end
@@ -20,13 +21,13 @@ class Board
     end
 
     def move_piece(color, start_pos, end_pos)
-        raise 'no piece' if !empty_pos?(start_pos)
-        raise 'position is not empty' if !empty_pos?(end_pos)
+        raise 'no piece' if !empty?(start_pos)
+        # raise 'position is not empty' if !empty_pos?(end_pos)
         piece = self[start_pos]
     end
 
-    def empty_pos?(pos)
-        @board[pos].empty?
+    def empty?(pos)
+        self[pos].empty?
     end
 
     
