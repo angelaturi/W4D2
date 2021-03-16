@@ -3,8 +3,10 @@ require_relative "null_piece"
 
 class Board
 
+    attr_reader :null_piece, :board
+
     def self.init_board
-        Array.new(8) { Array.new(8, @null_piece) }
+        Array.new(8) { Array.new(8) }
     end
 
     def initialize
@@ -13,21 +15,22 @@ class Board
     end
 
     def [](pos)
-        @board[pos.first][pos.last]
+        row, col = pos
+        @board[row][col]
     end
 
     def []=(pos, val)
+        
         @board[pos.first][pos.last] = val
     end
 
     def move_piece(color, start_pos, end_pos)
-        raise 'no piece' if !empty?(start_pos)
-        # raise 'position is not empty' if !empty_pos?(end_pos)
+        raise 'no piece' if !empty?(start_pos) || !empty?(end_pos)
         piece = self[start_pos]
     end
 
     def empty?(pos)
-        self[pos].empty?
+        @board[pos].nil?
     end
 
     
