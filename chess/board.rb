@@ -8,7 +8,6 @@ class Board
     def initialize
         @null_piece = NullPiece.new
         @board = Board.init_board
-        
     end
 
     def [](pos)
@@ -30,8 +29,8 @@ class Board
     def move_piece(color, start_pos, end_pos)
         raise 'no piece' if empty?(start_pos) || !empty?(end_pos)
         piece = self[start_pos]
-        self[end_pos] = piece
         self[start_pos] = null_piece
+        self[end_pos] = piece # piece[0, 0]
         piece.pos = end_pos
     end
 
