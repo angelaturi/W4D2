@@ -8,9 +8,9 @@ class Piece
         @color = color
     end
 
-    def inspect
-        pos
-    end
+    # def inspect
+    #     pos
+    # end
     
 
 end
