@@ -7,11 +7,11 @@ class Board
     attr_reader :null_piece
 
     def self.init_board
-        Array.new(8) { Array.new(8, @null_piece) }
+        Array.new(8) { Array.new(8) { NullPiece.instance } }
     end
 
     def initialize
-        @null_piece = NullPiece.new
+        @null_piece = NullPiece.instance
         @board = Board.init_board
     end
 

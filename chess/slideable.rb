@@ -39,7 +39,9 @@ module Slideable
         moves
     end
 
-    def move_dirs
+    private
 
+    def move_dirs
+        
     end
 end
