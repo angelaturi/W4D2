@@ -26,15 +26,7 @@ module Slideable
         moves = []
         move_dirs.each do |dir|
 
-            flag = true
-
-            while flag
-                cur_x, cur_y = pos
-                x, y = dir
-                new_pos = [cur_x + x, cur_y + y]
-                break until !board.valid_pos?(new_pos)
-                moves << new_pos if board.empty?(new_pos)
-            end
+            moves.concat(grow_unblocked_moves_in_dir(dx, dy))
         end
         moves
     end
@@ -42,6 +34,25 @@ module Slideable
     private
 
     def move_dirs
-        
+        raise NotImplementedError 
+    end
+
+    def grow_unblocked_moves_in_dir(dx, dy)
+        cur_x, cur_y = pos
+        move = []
+        flag = true
+
+        while flag
+            cur_x, cur_y = cur_x + dx, cur_y + dy
+            pos = [cur_x, cur_y]
+            break until !board.valid_pos?(pos)
+                if board.empty?(pos)
+                    move << pos 
+                else
+                    move << pos if board[pos].color != color
+                    break
+                end
+        end
+        return move
     end
 end
