@@ -1,9 +1,7 @@
-require "Stepable"
 require_relative 'Piece'
 
 
 class Pawn < Piece
-    include "Stepable"
     
     def symbol
         "♙".colorize(@color)
@@ -37,7 +35,15 @@ class Pawn < Piece
     end
 
     def side_attacks
-        attack_pos = []
+        x, y = @pos
 
+        side_moves = [[x + forward_dir, y - 1], [x + forward_dir, y + 1]]
+        side_moves.select do |attack|
+            if !board.valid_pos?(attack) || board.empty?(attack)
+                next
+            end
+            potential_attack = board[attack]  
+            potential_attack && potential_attack.color != color
+        end
     end
 end
