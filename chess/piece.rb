@@ -16,6 +16,10 @@ class Piece
         possible_moves = []
     end
 
+    def to_s
+        " #{symbol} ".colorize(color)
+    end
+
     
 
 end

@@ -1,4 +1,4 @@
-require_relative "piece"
+require_relative "Piece"
 require_relative "stepable"
 
 class Knight < Piece
@@ -16,8 +16,11 @@ class Knight < Piece
     ]
 
     def symbol
-        "♞".colorize(color)
+        " "
+        # "♞".colorize(color)
     end
+
+    protected
 
     def move_diffs
         MOVES
