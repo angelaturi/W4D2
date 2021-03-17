@@ -3,12 +3,12 @@ require_relative "Piece"
 
 class Board
 
-    attr_accessor :board
+    attr_accessor :rows
     attr_reader :null_piece
 
     def initialize
         @null_piece = NullPiece.instance
-        @board = Array.new(8) { Array.new(8, @null_piece) }
+        # @board = Array.new(8) { Array.new(8, @null_piece) }
     end
 
     def [](pos)
@@ -40,11 +40,11 @@ class Board
     end
 
     def add_piece(piece, pos)
-        @board[pos] = piece
+        self[pos] = piece
     end
 
     def pieces
-
+        @board.flatten.select { |ele| ele != null_piece }
     end
 
     def checkmate?(color)
@@ -63,7 +63,12 @@ class Board
         
     end
 
-    # protected
+    protected
+
+    def create_start_board_p
+        @rows = Array.new(8) { Array.new(8, @null_piece) }
+
+    end
     
 
 end
