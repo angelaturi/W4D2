@@ -25,7 +25,7 @@ module Slideable
     def moves
         moves = []
         move_dirs.each do |dir|
-
+            dx, dy = dir
             moves.concat(grow_unblocked_moves_in_dir(dx, dy))
         end
         moves
@@ -38,7 +38,7 @@ module Slideable
     end
 
     def grow_unblocked_moves_in_dir(dx, dy)
-        cur_x, cur_y = pos
+        cur_x, cur_y = self.pos
         move = []
         flag = true
 

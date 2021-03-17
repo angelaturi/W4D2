@@ -1,10 +1,12 @@
+require "Stepable"
 require_relative 'Piece'
 
 
 class Pawn < Piece
+    include "Stepable"
     
     def symbol
-        :♙.colorize(@color)
+        "♙".colorize(@color)
     end
 
     def moves
@@ -24,6 +26,18 @@ class Pawn < Piece
     def forward_steps
         x, y = @pos
         step = []
-        one_step = [x + forward_dir, y ]
-        if board.valid_pos?(one_step) 
+        one_step = [x + forward_dir, y]
+        if board.valid_pos?(one_step) && board.empty?(one_step)
+            step << one_step
+        end
+        
+        two_step = [one_step[0] + forward_dir, one_step[1]]
+        step << two_step if at_start_row? && board.empty?(two_step)
+        step
+    end
+
+    def side_attacks
+        attack_pos = []
+
+    end
 end
